@@ -763,3 +763,28 @@
                     "B) Sistema operacional com mínimo downtime",
                     "C) Baixo custo",
                     "D)
+                    <script>
+function renderQuestion(index) {
+    const container = document.getElementById("quiz-container");
+    const q = questions[index];
+
+    container.innerHTML = `
+        <div class="question-container active">
+            <div class="question-number">Pergunta ${index + 1}</div>
+            <div class="question-text">${q.question}</div>
+            <ul class="options">
+                ${q.options.map((opt, i) => `
+                    <li class="option">
+                        <input type="radio" name="q${index}" id="q${index}_${i}">
+                        <label for="q${index}_${i}">${opt}</label>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderQuestion(0);
+});
+</script>
